@@ -13,6 +13,19 @@ import subprocess
 
 class PyCharm():
     cmds = {
+        'start_stop_macro_recording': {
+            'aliases': ['start macro', 'stop macro', 'iniciar macro', 'parar macro',
+                        'empezar macro', 'detener macro'],
+            'key_shortcut': 'ctrl+shift+alt+3',
+            'abbreviations': []},
+        'execute_macro': {
+            'aliases': ['execute macro', 'run macro', 'ejecutar macro', 'correr macro'],
+            'key_shortcut': 'ctrl+shift+alt+4', 
+            'abbreviations': []},
+        'compare_with_git': {
+            'aliases': ['compare with git', 'comparar con git'],
+            'key_shortcut': 'ctrl+shift+alt+1',
+            'abbreviations': []},
         'favorites': {
             'aliases': ['favorites', 'favoritos'],
             'key_shortcut': 'alt+2',
