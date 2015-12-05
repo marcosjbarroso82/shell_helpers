@@ -1,0 +1,2 @@
+archivo linear 1
+linea 2
