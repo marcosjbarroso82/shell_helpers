@@ -10,17 +10,22 @@ Options:
 """
 
 import subprocess
+from time import sleep, time
 
 class PyCharm():
     cmds = {
         'start_stop_macro_recording': {
             'aliases': ['start macro', 'stop macro', 'iniciar macro', 'parar macro',
-                        'empezar macro', 'detener macro'],
+                        'empezar macro', 'grabar macro', 'detener macro'],
             'key_shortcut': 'ctrl+shift+alt+3',
             'abbreviations': []},
         'execute_macro': {
             'aliases': ['execute macro', 'run macro', 'ejecutar macro', 'correr macro'],
-            'key_shortcut': 'ctrl+shift+alt+4', 
+            'key_shortcut': 'ctrl+shift+alt+4',
+            'abbreviations': []},
+        'execute_last_macro': {
+            'aliases': ['execute last macro', 'run last macro', 'ejecutar ultima macro', 'correr ultima macro'],
+            'key_shortcut': 'ctrl+shift+alt+5',
             'abbreviations': []},
         'compare_with_git': {
             'aliases': ['compare with git', 'comparar con git'],
@@ -28,6 +33,7 @@ class PyCharm():
             'abbreviations': []},
         'favorites': {
             'aliases': ['favorites', 'favoritos'],
+            'miss_understood_aliases': ['favorite', 'savory', 'hey body', 'favorite e'],
             'key_shortcut': 'alt+2',
             'abbreviations': []},
         'recent_files': {
@@ -168,7 +174,7 @@ class PyCharm():
         'show_bookmarks': {
             'aliases': ['show bookmarks', 'show bookmark',
                         'mostrar anclas'],
-            'key_shortcut': 'ctrl+alt+shift+X',
+            'key_shortcut': 'shift+F11',
             'abbreviations': []},
         'next_bookmark': {
             'aliases': ['next bookmark',
@@ -217,7 +223,8 @@ class PyCharm():
 
         }
 
-
+    def is_focused(self):
+        return True
 
     def favorites(self):
         subprocess.call( "xdotool key alt+2" , shell=True)
@@ -226,13 +233,14 @@ class PyCharm():
         subprocess.call( "xdotool key alt+p" , shell=True)
 
     def command(self, cmd):
+        print("PyCharm Command: " + cmd)
         for app_cmd in self.cmds:
-            if cmd in self.cmds[app_cmd]['aliases']:
+            if cmd in self.cmds[app_cmd]['aliases'] or ('miss_understood_aliases' in self.cmds[app_cmd] and cmd in self.cmds[app_cmd]['miss_understood_aliases']) :
                 if self.cmds[app_cmd]['key_shortcut']:
                     print(self.cmds[app_cmd]['key_shortcut'])
                     subprocess.call( "xdotool key " + self.cmds[app_cmd]['key_shortcut'] , shell=True)
                 else:
-                    print("ERROR")
+                    print("ERROR 244")
 
 
 
