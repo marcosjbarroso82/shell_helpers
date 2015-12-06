@@ -51,7 +51,7 @@ def get_menu_or_exec(buffer, t, modifiers, keys, apps, keyb, *args, **kwargs):
             try:
                 with m as source:
                     print("Say something!")
-                    audio = r.listen(source)
+                    audio = r.listen(source, timeout=3)
                     print("Got it! Now to recognize it...")
                     try:
                         # recognize speech using Google Speech Recognition
